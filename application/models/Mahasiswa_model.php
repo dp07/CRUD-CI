@@ -17,6 +17,41 @@
 
             $this->db->insert('mahasiswa', $data);
         }
+
+        public function ubahDataMahasiswa ($id)
+        {
+            $data = [
+                "nama" => $this->input->post('id'),
+                "nama" => $this->input->post('nama', true),
+                "nim" => $this->input->post('nim', true),
+                "email" => $this->input->post('email', true),
+                "jurusan" => $this->input->post('jurusan', true)
+            ];
+
+            $this->db->where('id', $id);
+            $this->db->update('mahasiswa', $data);
+        }
+
+        public function hapusDataMahasiswa($id)
+        {
+            $this->db->where('id', $id);
+            $this->db->delete('mahasiswa');
+        }
+
+        public function getMahasiswaById($id)
+        {
+            return $this->db->get_where('mahasiswa', ['id' => $id])->row_array();
+        }
+
+        public function cariDataMahasiswa()
+        {
+            $keyword = $this->input->post('keyword');
+
+            $this->db->like('nama', $keyword);
+            $this->db->or_like('jurusan', $keyword);
+
+            return $this->db->get('mahasiswa')->result_array();
+        }
     }
     
 ?>
