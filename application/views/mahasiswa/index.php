@@ -1,5 +1,10 @@
 
 <div class="container">
+<div class="row">
+  <div class="col-md-6">
+      <a href="<?= base_url(); ?>Mahasiswa/tambah" class="btn btn-primary mt-2">Tambah Data Mahasiswa</a>
+  </div>
+</div>
 <div class="row mt-3">
 <div class="col-md-6">
 <h3>Daftar Mahasiswa</h3>
